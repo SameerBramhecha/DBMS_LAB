@@ -2,7 +2,7 @@ create table O_EmpId (empid int primary key, name varchar(20),department varchar
 
 create table N_EmpId (empid int primary key, name varchar(20),department varchar(20));
 
---Inserting values in O_EmpId table
+/*Inserting values in O_EmpId table*/
 
 insert into O_EmpId VALUES (101,'Sagar','Accounts');
 
@@ -24,7 +24,7 @@ insert into O_EmpId VALUES (109,'Atharva','IT');
 
 select * from O_EmpId;
 
---Inserting values in N_EmpId table
+/*Inserting values in N_EmpId table*/
 
 insert into N_EmpId VALUES (102,'Yash','IT');
 
@@ -36,7 +36,7 @@ insert into N_EmpId VALUES (108,'Rohit','Management');
 
 select * from N_EmpId;
 
--- Creating procedure to implement Cursor
+/*Creating procedure to implement Cursor*/
 
 delimiter //
 
