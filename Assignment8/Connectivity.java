@@ -86,5 +86,5 @@ public class Connectivity{
 	}
 	
 }
-//javac Mysql.java
-//java MySql
+//javac Connectivity.java
+//java Connectivity
