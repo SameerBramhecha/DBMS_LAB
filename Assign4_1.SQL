@@ -44,7 +44,7 @@ declare doi DATE;
 declare dor DATE;
 declare continue handler for not found
 begin
-select 'Not Found';
+select 'Not Found' as Exception;
 end;
 	select dateofissue into doi from borrower where name = nameofbook;
 	select CURRENT_DATE() into dor;
