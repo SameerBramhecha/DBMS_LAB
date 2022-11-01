@@ -1,0 +1,98 @@
+
+db.createCollection("Courses");
+
+db.Courses.insert([
+{
+	Department: "COMP",
+	Years : ["SE","TE","BE"],
+	No_of_Divisions : 4,
+	N_stud_Y : 240,
+	Faculty : 40
+	
+},
+{
+	Department: "IT",
+	Years : ["SE","TE","BE"],
+	No_of_Divisions : 3,
+	N_stud_Y : 180,
+	Faculty : 35
+	
+},
+{
+	Department: "ENTC",
+	Years : ["SE","TE","BE"],
+	No_of_Divisions : 4,
+	N_stud_Y : 240,
+	Faculty : 45
+	
+},
+{
+	Department: "FE",
+	Years : ["FE"],
+	No_of_Divisions : 11,
+	N_stud_Y : 660,
+	Faculty : 40
+	
+}
+]
+);
+
+db.Courses.find();
+
+db.Courses.update(
+{ Department : "COMP"},
+{ $set : {Faculty : 50, N_stud_Y : 320}}
+);
+
+db.Courses.update(
+{ Department :"IT"},
+{ $set : {Faculty : 45,N_stud_Y : 180}}
+);
+
+db.Courses.update(
+{ Department :"ENTC"},
+{ $set : {Faculty : 55,N_stud_Y : 320}}
+);
+
+
+db.Courses.find();
+
+
+db.Courses.find(
+{N_stud_Y : {$gt : 300}},
+{Department: 1, Years:1, _id:0} 
+);
+
+
+db.Courses.find(
+{$or : [{N_sutd_Y : {$gt:250}} , {Faculty : {$gte:50}}]},
+{Department: 1, Years:2, _id: 0}
+);
+
+db.Courses.find(
+{Faculty : { $not : {$ne:50} } },
+{Department:1,_id:0}
+);
+
+
+db.Courses.remove(
+{Department : "FE"}
+);
+
+db.Courses.find();
+
+db.Courses.update(
+{Department : "FE"},
+{$set : {Faculty : 45, N_stud_Y : 660}},
+{upsert: true}
+);
+
+db.Courses.update(
+{Department : "ME"},
+{$set : {Faculty : 10, N_stud_Y : 60}},
+{upsert : true}
+);
+
+db.Courses.find();
+
+
