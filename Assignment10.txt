@@ -1,0 +1,79 @@
+db.createCollection("Movies");
+
+db.Movies.insert([
+{
+	Name : "Drishyam 2",
+	Genre : ["Thriller","Crime"],
+	Ticket : 400, 
+	Cast : ["Ajay Devgan","Tabbu"],
+	Release : "2022-11-18",
+	Director : "D1",
+	Producer : "P1"
+},
+{
+	Name : "Brahmastra",
+	Genre : ["Mythology","Fiction","VR"],
+	Ticket : 200, 
+	Cast : ["Ranbir Kapoor","Alia Bhatt","Amitabh Bacchan"],
+	Release : "2022-09-15",
+	Director : "D2",
+	Producer : "P2"
+},
+{
+	Name : "Vikram Vedha",
+	Genre : ["Crime","Mafia","Suspense","Thriller"],
+	Ticket : 250, 
+	Cast : ["Hrithik Roshan","Saif Ali Khan"],
+	Release : "2022-10-01",
+	Director : "D3",
+	Producer : "P3"
+},
+{
+	Name : "Conjuring 3",
+	Genre : ["Horror","Supernatural"],
+	Ticket : 400, 
+	Cast : ["Lorraine","Ed Warren"],
+	Release : "2021-09-10",
+	Director : "D4",
+	Producer : "P4"
+},
+{
+	Name : "Encanto",
+	Genre : ["Family","Animation","Kids","Fiction"],
+	Ticket : 350, 
+	Cast : ["Selena","Rock"],
+	Release : "2021-09-10",
+	Director : "D5",
+	Producer : "P5"
+}
+]);
+
+
+db.Movies.find().pretty();
+
+db.Movies.createIndex({Director:1});
+
+db.Movies.getIndexes();
+
+db.Movies.find({Director:"D4"});
+
+db.Movies.aggregate([
+{
+	$match : {Genre : "Crime"}
+},
+]).pretty();
+
+
+db.Movies.aggregate([
+{
+	$group : {_id:"$Release"}
+}
+]);
+
+
+db.Movies.aggregate([
+{
+	$group : {_id:"$Release", count : {$sum:1}}
+}
+]);
+
