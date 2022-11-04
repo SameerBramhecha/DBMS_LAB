@@ -29,11 +29,11 @@ select * from placementdrive;
 insert into student (drive_id,sname,cgpa,sbranch) values (1,'Sameer',9.7,'Computer');
 insert into student (drive_id,sname,cgpa,sbranch) values (2,'Kunal',9.6,'ENTC');
 insert into student (drive_id,sname,cgpa,sbranch) values (5,'Yash',9.4,'IT');
-insert into student (drive_id,sname,cgpa,sbranch) values (1,'Aryan',9.1,'IT');
+insert into student (drive_id,sname,cgpa,sbranch) values (1,'Aditi',9.1,'Computer');
 insert into student (drive_id,sname,cgpa,sbranch) values (4,'Darshan',8.4,'Computer');
-insert into student (drive_id,sname,cgpa,sbranch) values (5,'Shyam',7.14,'ENTC');
-insert into student (drive_id,sname,cgpa,sbranch) values (8,'Ram',6.1,'ENTC');
-insert into student (drive_id,sname,cgpa,sbranch) values (7,'Ajit',8,'IT');
+insert into student (drive_id,sname,cgpa,sbranch) values (5,'Atharva',7.14,'ENTC');
+insert into student (drive_id,sname,cgpa,sbranch) values (8,'Kajol',6.1,'ENTC');
+insert into student (drive_id,sname,cgpa,sbranch) values (7,'Sejal',8,'IT');
 insert into student (drive_id,sname,cgpa,sbranch) values (6,'Arnav',7.8,'Computer');
 insert into student (drive_id,sname,cgpa,sbranch) values (3,'Dhruv',8.5,'ENTC');
 
