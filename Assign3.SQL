@@ -27,14 +27,14 @@ insert into  placementdrive (company_name,package,location) values ('Microsoft',
 insert into  placementdrive (company_name,package,location) values ('Wipro',500000,'Chennai');
 
 
-insert into student (drive_id,s_name,cgpa, s_branch) values (1,'Sameer',9,'Computer');
-insert into student (drive_id,s_name,cgpa, s_branch) values (4,'Kunal',9.6,'ENTC');
+insert into student (drive_id,s_name,cgpa, s_branch) values (1,'Sameer',9.7,'Computer');
+insert into student (drive_id,s_name,cgpa, s_branch) values (2,'Kunal',9.6,'ENTC');
 insert into student (drive_id,s_name,cgpa, s_branch) values (5,'Yash',9.4,'IT');
-insert into student (drive_id,s_name,cgpa, s_branch) values (2,'Aryan',9.1,'IT');
-insert into student (drive_id,s_name,cgpa, s_branch) values (1,'Aditi',8.4,'Computer');
-insert into student (drive_id,s_name,cgpa, s_branch) values (5,'Shyam',7.14,'ENTC');
-insert into student (drive_id,s_name,cgpa, s_branch) values (8,'Ram',6.1,'ENTC');
-insert into student (drive_id,s_name,cgpa, s_branch) values (7,'Ajit',8,'IT');
+insert into student (drive_id,s_name,cgpa, s_branch) values (1,'Aditi',9.1,'Computer');
+insert into student (drive_id,s_name,cgpa, s_branch) values (4,'Darshan',8.4,'Computer');
+insert into student (drive_id,s_name,cgpa, s_branch) values (5,'Atharva',7.14,'ENTC');
+insert into student (drive_id,s_name,cgpa, s_branch) values (8,'Kajol',6.1,'ENTC');
+insert into student (drive_id,s_name,cgpa, s_branch) values (7,'Sejal',8,'IT');
 insert into student (drive_id,s_name,cgpa, s_branch) values (6,'Arnav',7.8,'Computer');
 insert into student (drive_id,s_name,cgpa, s_branch) values (3,'Dhruv',8.5,'ENTC');
 insert into student (drive_id,s_name,cgpa, s_branch) values (7,'Shantanu',9,'Computer');
