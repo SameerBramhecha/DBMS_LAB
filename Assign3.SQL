@@ -50,7 +50,7 @@ insert into training (s_id,company_name, t_fee,t_year) values (105,'Flipkart',45
 insert into training (s_id,company_name, t_fee,t_year) values (102,'Google',10000,2021);
 insert into training (s_id,company_name, t_fee,t_year) values (103,'Twitter',6325,2019);
 insert into training (s_id,company_name, t_fee,t_year) values (109,'Google',8000,2014);
-insert into training (s_id,company_name, t_fee,t_year) values (108,'Microsoft'20000,2015);
+insert into training (s_id,company_name, t_fee,t_year) values (108,'Microsoft',20000,2015);
 insert into training (s_id,company_name, t_fee,t_year) values (107,'Wipro',16000,2013);
 insert into training (s_id,company_name, t_fee,t_year) values (111,'Microsoft',27000,2011);
 insert into training (s_id,company_name, t_fee,t_year) values (110,'Infosys',12000,2016);
