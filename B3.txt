@@ -1,9 +1,11 @@
 ASSIGNMENT NUMBER 3
 MAP REDUCE IN MONGODB
 
-
+1.] CREATE COLLECTION 'Orders'
 
 db.createCollection("Orders")
+
+2.] Insert Atleast 30 records in 'Orders'
 
 db.Orders.insert({_id:1, custId:101, ordDate:new Date("2021-11-01"), price:25})
 
@@ -66,17 +68,21 @@ db.Orders.insert({_id:29, custId:110, ordDate:new Date("2021-11-30"), price:35})
 db.Orders.insert({_id:30, custId:110, ordDate:new Date("2021-12-01"), price:55})
 
 
-
+3.] Display All records in 'Orders'
 db.Orders.find().pretty();
 
-var mapFun = function(){emit(this.custId, this.price);}
 
+4.] Display Total Price of each Customer
+
+var mapFun = function(){emit(this.custId, this.price);}
 
 var reduceFun = function(keycustId, valuesPrices){return Array.sum(valuesPrices);}
 
 db.Orders.mapReduce(mapFun, reduceFun, {out:"Result"})
 
 db.Result.find()
+
+5.] Display average Price of each Customer where ordDate is greater than 2021-11-19
 
 db.Orders.mapReduce(
 	function(){
@@ -94,9 +100,13 @@ db.Orders.mapReduce(
 
 db.Result2.find().pretty();
 
+6.] Display average price of customers whose custId is greater than 102.
+
 db.Orders.mapReduce(function(){emit(this.custId, this.price);}, function(key, values){return Array.avg(values)}, {query:{custId:{$gt:102}}, out:"Result2"})
 
 db.Result2.find().pretty();
+
+7.] Display average price of customers whose custId is equal to 102.
 
 db.Orders.mapReduce(function(){emit(this.custId, this.price);}, function(key, values){return Array.avg(values)}, {query:{custId:{$eq:102}}, out:"Result2"})
 
@@ -106,4 +116,3 @@ db.Result2.find().pretty();
 db.Orders.drop();
 db.Result.drop();
 db.Result2.drop();
-
