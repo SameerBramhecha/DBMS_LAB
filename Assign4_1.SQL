@@ -15,56 +15,104 @@ for days less than 30, Rs.5 per day.
 
 
 
-create table borrower(rollno int primary key,name varchar(20), dateofissue DATE, nameofbook varchar(50),status char);
+Asssignment 4A
 
-desc borrower;
 
-create table fine(rollno int primary key,date DATE, amt int);
+create table borrower(
+rollno int, name varchar(40),
+doi DATE, bname varchar(40),
+status char
+);
 
-desc fine;
+create table fine(
+rollno int,
+date DATE,
+amt int
+);
 
-insert into borrower values (1,'Kunal','2022-07-21','Merchant Of Venice','I');
+insert into borrower values (1,'Kunal',
+'2022-11-01','Merchant Of Venice','I');
 
-insert into borrower values (2,'Sarthak','2022-07-25','As You Like It','I');
+insert into borrower values (2,'Sarthak',
+'2022-10-30','As You Like It','I');
 
-insert into borrower values (3,'Atharva','2022-07-30','My Experiments With Truth','I');
+insert into borrower values (3,'Atharva',
+'2022-10-31','My Experiments With Truth','I');
 
-insert into borrower values (4,'Omkar','2022-08-01','Malgudi Days','I');
+insert into borrower values (4,'Omkar',
+'2022-10-25','Malgudi Days','I');
 
-insert into borrower values (5,'Darshan','2022-08-15','The Hidden Pool','I');
+insert into borrower values (5,'Darshan',
+'2022-10-15','The Hidden Pool','I');
 
 select * from borrower;
-
 delimiter //
 
-create procedure finecalc(in rollno int, in name varchar(50))
+create procedure finecalc(in roll_no int,
+in b_name varchar(40))
 begin
-declare fineamt int;
-declare doi DATE;
-declare dor DATE;
-declare continue handler for not found
+declare date_of_issue DATE;
+declare fineamt int default -1;
+declare days int;
+declare act_rollno int;
+declare pre_status char;
+
+declare exit handler for SQLSTATE '43250'
 begin
-select 'Not Found' as Exception;
+select "Book was previously returned!!!" as 
+Exception;
 end;
-	select dateofissue into doi from borrower where name = nameofbook;
-	select CURRENT_DATE() into dor;
-	IF(DATEDIFF(dor,doi)>=15 and DATEDIFF(dor,doi)<=30) THEN
-		set fineamt = (DATEDIFF(dor,doi)-14)*5;
-	ELSEIF (DATEDIFF(dor,doi)>30) THEN
-		set fineamt = (DATEDIFF(dor,doi)-30)*50 + 75;
-	END IF;
-	IF(DATEDIFF(dor,doi)>=0) THEN
-		UPDATE borrower set status = 'R' where rollno = borrower.rollno;
-	insert into fine values(rollno,dor,fineamt);
+
+declare exit handler for SQLSTATE '43251'
+begin
+select "This roll number did not issue the 
+book which they are trying to return" 
+as Exception;
+end;
+
+declare exit handler for not found
+begin
+select "Book not Found" as Exception;
+end;
+
+select doi into date_of_issue from borrower 
+where bname = b_name;
+
+select rollno into act_rollno from borrower
+where bname = b_name;
+
+select status into pre_status from borrower
+where bname = b_name;
+
+IF(pre_status = "R") THEN SIGNAL SQLSTATE '43250';
 END IF;
-	
+
+IF(roll_no != act_rollno) THEN SIGNAL SQLSTATE '43251';
+END IF;
+
+set days = DATEDIFF(CURDATE(),date_of_issue);
+
+IF(days>15 and days<=30) THEN
+set fineamt = days*5;
+ELSEIF (days>30) THEN
+set fineamt = (days-30)*50 + 150;
+END IF;
+
+IF(fineamt!=-1) THEN
+insert into fine values(roll_no,CURDATE(),fineamt);
+update borrower set status = "R" where rollno = roll_no;
+select fineamt as "Fine to be paid";
+
+ELSE
+update borrower set status = "R" where rollno = roll_no;
+select "No fine to be paid" as "Message";
+END IF;
 END;
+
 //
 
 delimiter ;
 
 call finecalc(1,'Merchant Of Venice');
-select * from fine;
-call finecalc(2,'As You Like It');
-select * from fine;
+
 
