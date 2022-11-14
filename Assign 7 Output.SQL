@@ -16,23 +16,23 @@ mysql>
 mysql> DELIMITER //   
 mysql>          
 mysql> CREATE TRIGGER t1  
--> BEFORE INSERT        
--> ON Library FOR EACH ROW
--> BEGIN
--> INSERT INTO library_audit values(book_id,title,isbn,author,copies);   
--> END;                                                                
--> //   
+    -> BEFORE INSERT        
+    -> ON Library FOR EACH ROW
+    -> BEGIN
+    -> INSERT INTO library_audit values(book_id,title,isbn,author,copies);   
+    -> END;                                                                
+    -> //   
 Query OK, 0 rows affected (0.00 sec)  
 mysql>                     
 mysql> /*AFTER INSERT TRIGGER*/ 
 mysql>                       
 mysql> CREATE TRIGGER t2     
--> AFTER INSERT              
--> ON Library FOR EACH ROW   
--> BEGIN                     
-->   INSERT INTO library_audit values(NEW.book_id,NEW.title,NEW.isbn,NEW.author,NEW.copies);
--> END;  
--> //        
+    -> AFTER INSERT              
+    -> ON Library FOR EACH ROW   
+    -> BEGIN                     
+    ->   INSERT INTO library_audit values(NEW.book_id,NEW.title,NEW.isbn,NEW.author,NEW.copies);
+    -> END;  
+    -> //        
 Query OK, 0 rows affected (0.00 sec)  
 mysql>
 mysql> DELIMITER ; 
@@ -88,23 +88,23 @@ mysql>
 mysql> DELIMITER //                                                  
 mysql>                                                               
 mysql> CREATE TRIGGER t3                                             
--> BEFORE UPDATE                                                     
--> ON Library FOR EACH ROW                                           
--> BEGIN                                                             
-->   INSERT INTO library_audit values(OLD.book_id,old.title,old.isbn,old.author,old.copies);   
--> END;                                                                              
--> //                                                                                
+    -> BEFORE UPDATE                                                     
+    -> ON Library FOR EACH ROW                                           
+    -> BEGIN                                                             
+    ->   INSERT INTO library_audit values(OLD.book_id,old.title,old.isbn,old.author,old.copies);   
+    -> END;                                                                              
+    -> //                                                                                
 Query OK, 0 rows affected (0.01 sec)                                                 
 mysql>                                                                               
 mysql> /*AFTER UPDATE TRIGGER*/                                                      
 mysql>                                                                               
 mysql> CREATE TRIGGER t4                                                             
--> AFTER UPDATE                                                                      
--> ON Library FOR EACH ROW                                                           
--> BEGIN                                                                             
-->   INSERT INTO library_audit values(NEW.book_id,NEW.title,NEW.isbn,NEW.author,NEW.copies);    
--> END;                                                                                       
--> //                                                                                         
+    -> AFTER UPDATE                                                                      
+    -> ON Library FOR EACH ROW                                                           
+    -> BEGIN                                                                             
+    ->   INSERT INTO library_audit values(NEW.book_id,NEW.title,NEW.isbn,NEW.author,NEW.copies);    
+    -> END;                                                                                       
+    -> //                                                                                         
 Query OK, 0 rows affected (0.00 sec)                                                          
 mysql>                                                                                        
 mysql> DELIMITER ;                                                                            
@@ -184,22 +184,22 @@ mysql>
 mysql> DELIMITER //                                                    
 mysql>                                                                 
 mysql> CREATE TRIGGER t5                                               
--> BEFORE DELETE                                                       
--> ON Library FOR EACH ROW                                             
--> BEGIN                                                               
-->   INSERT INTO library_audit values(OLD.book_id,old.title,old.isbn,old.author,old.copies);       
--> END;                 
--> //                                                                  
+    -> BEFORE DELETE                                                       
+    -> ON Library FOR EACH ROW                                             
+    -> BEGIN                                                               
+    ->   INSERT INTO library_audit values(OLD.book_id,old.title,old.isbn,old.author,old.copies);       
+    -> END;                 
+    -> //                                                                  
 Query OK, 0 rows affected (0.01 sec)                                   
 mysql>                                                                 
 mysql> /*AFTER DELETE TRIGGER*/                                        
 mysql> CREATE TRIGGER t6                                               
--> AFTER DELETE                                                        
--> ON Library FOR EACH ROW                                             
--> BEGIN                                                               
-->   INSERT INTO library_audit values(OLD.book_id,old.title,old.isbn,old.author,old.copies);     
--> END;                                                                                          
--> //  
+    -> AFTER DELETE                                                        
+    -> ON Library FOR EACH ROW                                             
+    -> BEGIN                                                               
+    ->   INSERT INTO library_audit values(OLD.book_id,old.title,old.isbn,old.author,old.copies);     
+    -> END;                                                                                          
+    -> //  
 Query OK, 0 rows affected (0.00 sec)             
 mysql>                                           
 mysql> DELIMITER ;                                
